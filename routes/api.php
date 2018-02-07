@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function(Request $request){
+    return "test";
 });
+
+Route::get('events', 'EventController@getAll');
+Route::post('events', 'EventController@create')->middleware('auth.token');
+Route::delete('events/{id}', 'EventController@delete')->middleware('auth.token');

@@ -4,23 +4,22 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\AccessKey;
-use Carbon\Carbon;
 
-class CreateNewAccessKey extends Command
+class ListAccessKeys extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'access_key:create';
+    protected $signature = 'access_key:list';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new random access key';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -39,9 +38,9 @@ class CreateNewAccessKey extends Command
      */
     public function handle()
     {
-        $key = new AccessKey();
-        $key->key_body = AccessKey::genRandomStr(128);
-        $this->info('Access key created: ' . $key->key_body . " (will expire in 24 hours)");
-        $key->save();
+        $keys = AccessKey::all();
+        foreach($keys as $index => $key){
+            $this->info($index . " -> " . $key->key_body);
+        }
     }
 }
