@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'hackthevalley';
+    src: url('../fonts/hackthevalley-webfont.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/hackthevalley-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/hackthevalley-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/hackthevalley-webfont.svg') format('svg'); /* Legacy iOS */
+}
+
+@primary-font: 'hackthevalley';
+@body-font: 'Montserrat', sans-serif;
+
+.primary-font {
+  font-family: @primary-font;
+}
+
+.body-font {
+  font-family: @body-font;
+}
+
+body {
+    background-image: url("../images/home_background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#app {
+    padding-top: 100px;
+    #twitter-container {
+        position: fixed;
+        overflow-y: scroll;
+        max-height: calc(~"100% - 130px");
+        margin-left: 10px;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: white;
+        box-shadow: rgba(0,0,0,0.1) 5px 5px 20px;
+    }
+}
+
+h2 {
+    .primary-font;
+    color: white;
+    text-shadow: rgba(0,0,0,0.2) 3px 3px 5px;
+    font-size: 50px;
+}
+
+.mini-link {
+    .body-font;
+    padding-top: 15px;
+    a {
+        color: white;
+        font-size: 18px;
+        text-shadow: rgba(0,0,0,0.3) 1px 1px 2px;
+    }
+}
+
+h3 {
+    .primary-font;
+    color: white;
+    font-weight: 100;
+    text-shadow: rgba(0,0,0,0.2) 2px 2px 3px;
+    font-size: 30px;
+}
+
+.event {
+    padding-bottom: 20px;
+    .event-until {
+        color: white;
+        font-size: 18px;
+        display: inline-block;
+        text-shadow: rgba(0,0,0,0.2) 2px 2px 3px;
+        .body-font;
+    }
+    .event-labels {
+        display: inline-block;
+        font-size: 18px;
+        .label {
+            margin-right: 5px;
+            background-color: rgba(0,0,0,0.2);
+        }
+    }
+    .event-timing {
+        .body-font;
+        padding-top: 10px;
+        color: white;
+        font-size: 16px;
+    }
+}
+
+.events-container {
+    text-align: center;
+    h2 {
+        padding-bottom: 30px;
+    }
+}
+
+@media(max-width: 993px){
+    #app {
+        #twitter-container {
+            position: static;
+        }
+        padding-bottom: 50px;
+    }
+}

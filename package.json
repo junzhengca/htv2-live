@@ -15,7 +15,12 @@
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
+        "less": "^3.0.0",
+        "less-loader": "^4.0.5",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "gulp": "^3.9.1"
     }
 }

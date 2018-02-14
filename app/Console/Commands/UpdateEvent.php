@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Event;
+use Carbon\Carbon;
 
 class UpdateEvent extends Command
 {
@@ -44,6 +45,9 @@ class UpdateEvent extends Command
             $field = $this->ask("Which field do you wish to update? (name, start_time, end_time, description, tags, meta)");
             if(in_array($field, ['name', 'start_time', 'end_time', 'description', 'tags'])){
                 $input[$field] = $this->ask("Please enter a new value");
+                if($field == 'start_time' || $field == 'end_time'){
+                    $input[$field] = new Carbon($input[$field]);
+                }
                 $event->fill($input);
                 $event->save();
                 $this->info($event);

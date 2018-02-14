@@ -1,0 +1,119 @@
+.navbar {
+    &.navbar-default {
+      background-color: #738297;
+      border: none;
+      position: fixed;
+      width: 100%;
+      z-index: 99;
+      transition: all ease 0.5s;
+      border-radius: 0;
+      z-index: 99;
+      box-shadow: rgba(0,0,0,0.2) 0 0 30px;
+      .navbar-header {
+        background-color: #738297;
+        z-index: 99;
+        position: relative;
+        .navbar-brand {
+          img {
+            height: 75px;
+            transition: all ease 0.3s;
+          }
+          margin-left: 20px;
+        }
+        .navbar-toggle {
+          color: white;
+          border: none;
+          height: 50px;
+          margin-right: 20px;
+          .icon-bar {
+            background-color: white;
+          }
+          &:hover, &.active, &:active, &:focus {
+            background-color: transparent;
+          }
+        }
+      }
+      .navbar-collapse {
+        border: none;
+        &.in, &.collapsing {
+          background-color: #738297;
+          position: relative;
+          padding-top: 75px;
+          transition: all ease 0.5s;
+          top: -75px;
+          z-index: 1;
+          .navbar-nav {
+            li {
+              a {
+                text-align: center;
+              }
+            }
+          }
+        }
+        .navbar-nav {
+          li {
+            a {
+              line-height: 75px;
+              font-size: 16px;
+              color: white;
+              .body-font;
+              text-shadow: rgba(0,0,0,0.3) 1px 1px 3px;
+            }
+            &.active {
+              a {
+                background-color: transparent;
+                border-bottom: white 3px solid;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.navbar-small {
+      transition: all ease 0.5s;
+      height: 65px;
+      #application-button {
+        span.inner {
+          color: #90A2BD;
+          background-color: white;
+          text-shadow: none;
+        }
+        transform: scale(0.8);
+        top: -5px;
+      }
+      .navbar-header {
+        border: none;
+        .navbar-brand {
+          img {
+            height: 40px;
+            transition: all ease 0.3s;
+          }
+        }
+      }
+      .navbar-collapse {
+        &.show, &.collapsing {
+            background-color: #738297;
+            padding-top: 0;
+            top:0;
+            transition: all ease 0.5s;
+            z-index: -1;
+            position: static;
+            .navbar-nav {
+              li {
+                a {
+                  text-align: center;
+                }
+              }
+            }
+          }
+        .navbar-nav {
+          li {
+            a {
+              line-height: 40px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+}
