@@ -89,9 +89,6 @@ h3 {
   }
   #app #twitter-container {
     position: static;
-  }
-  #app #twitter-container {
-    position: static;
     height: auto;
     max-height: initial;
     margin-left: 0;
@@ -100,6 +97,7 @@ h3 {
     background-color: white;
     -webkit-box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 20px;
             box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 20px;
+    border-radius: initial;
   }
 }
 .navbar.navbar-default {
