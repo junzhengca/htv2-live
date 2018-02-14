@@ -29,7 +29,7 @@
     </div> 
     <div class="col-md-4" id="twitter-container-wrapper">
         <div id="twitter-container">
-            <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="twitter-timeline" href="https://twitter.com/hack_valley?ref_src=twsrc%5Etfw">Tweets by hack_valley</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </div>
 </div>
