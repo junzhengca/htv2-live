@@ -23,7 +23,8 @@ messaging.setBackgroundMessageHandler(function(payload) {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
     // Customize notification here
     const notificationOptions = {
-      body: payload.data.body
+      body: payload.data.body,
+      logo: 'https://live.hackvalley2.com/images/logo.png'
     };
   
     return self.registration.showNotification(payload.data.title,

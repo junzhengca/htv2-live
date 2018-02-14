@@ -89,7 +89,8 @@
     messaging.onMessage(function(payload){
         console.log(payload);
         Push.create(payload.data.title, {
-            body: payload.data.body
+            body: payload.data.body,
+            icon: 'https://live.hackvalley2.com/images/logo.png'
         });
     });
 
