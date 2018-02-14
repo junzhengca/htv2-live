@@ -83,6 +83,11 @@ h3 {
 .events-container h2 {
   padding-bottom: 30px;
 }
+.large-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  color: white;
+}
 @media (max-width: 993px) {
   #app {
     padding-bottom: 50px;
