@@ -81,7 +81,6 @@
                     self.events = data.data;
                 }).catch(function(e){
                     console.log(e);
-                    alert("This should never happen.... everything is broken.");
                 });
             },
             eventHappening: function(event){
