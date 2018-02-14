@@ -91,6 +91,7 @@
                 return false;
             }
         }
-    })
+    });
+
 </script>
 @endsection

@@ -20,3 +20,5 @@ Route::get('/', function(Request $request){
 Route::get('events', 'EventController@getAll');
 Route::post('events', 'EventController@create')->middleware('auth.token');
 Route::delete('events/{id}', 'EventController@delete')->middleware('auth.token');
+
+Route::post('fcm/subscribe', 'FCMController@subscribe');
