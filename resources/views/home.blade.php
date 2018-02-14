@@ -39,9 +39,16 @@
 <script>
     function resizeHomeInterface(){
         let twitterWrapperWidth = $("#twitter-container-wrapper").width();
-        $("#twitter-container").css({
-            'width': twitterWrapperWidth - 20 + "px"
-        });
+        if($(window).width() < 993){
+            $("#twitter-container").css({
+                'width': "auto"
+            });
+        } else {
+            $("#twitter-container").css({
+                'width': twitterWrapperWidth - 20 + "px"
+            });
+        }
+        
     }
 
     // Resize UI once, then resize whenever window is resized

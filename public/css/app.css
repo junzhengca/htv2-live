@@ -90,6 +90,17 @@ h3 {
   #app #twitter-container {
     position: static;
   }
+  #app #twitter-container {
+    position: static;
+    height: auto;
+    max-height: initial;
+    margin-left: 0;
+    border-radius: 0;
+    padding: 0;
+    background-color: white;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 20px;
+            box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 20px;
+  }
 }
 .navbar.navbar-default {
   background-color: #738297;
