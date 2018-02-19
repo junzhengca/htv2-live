@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::get('/hardware', function(){
     return view('hardware');
 });
+
+Route::get('/announcement', function(){
+    return view('announcement');
+});
+
+Route::get('/resource', function(){
+    return view('resource');
+});

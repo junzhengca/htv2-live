@@ -26,6 +26,12 @@
     <div class="container" id="app">
     @yield('content')
     </div>
+
+
+    <div class="notify-top" id="notification-alert" style="display: none">
+        <div class="notify-top-inner">Enable notification to receive timely update on upcoming events!<br><span class="text-muted">Go to your browser settings and enable notification for live.hackvalley2.com</span></div>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script>
     // Initialize Firebase
@@ -48,8 +54,9 @@
         console.log('Unable to get permission to notify.', err);
     });
 
-
-
+    /**
+     * This will loop until a message token is registered with server
+     */
     function loadMessagingToken(){
         messaging.getToken()
         .then(function(currentToken) {
@@ -75,17 +82,31 @@
         });
     }
 
-    
+
+    /**
+     * Handle token refresh
+     */
     messaging.onTokenRefresh(function() {
         messaging.getToken()
         .then(function(refreshedToken) {
-           
+            axios.post("api/fcm/subscribe", {
+                token: refreshedToken
+            }).then(function(){
+                console.log("Successfully subscribed");
+            }).catch(function(e){
+                console.log(e);
+                console.log("Failed to subscribe");
+                loadMessagingToken();
+            })
         })
         .catch(function(err) {
             console.log('Unable to retrieve refreshed token ', err);
         });
     });
 
+    /**
+     * Handle message
+     */
     messaging.onMessage(function(payload){
         console.log(payload);
         Push.create(payload.data.title, {
