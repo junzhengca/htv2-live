@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('home');
 });
@@ -26,3 +27,10 @@ Route::get('/announcement', function(){
 Route::get('/resource', function(){
     return view('resource');
 });
+Route::get('/500hash', function(){
+    return view('500hash');
+});
+
+Route::get('/admin', function(){
+    return view('admin');
+})->middleware('admin.auth');

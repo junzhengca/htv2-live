@@ -22,3 +22,6 @@ Route::post('events', 'EventController@create')->middleware('auth.token');
 Route::delete('events/{id}', 'EventController@delete')->middleware('auth.token');
 
 Route::post('fcm/subscribe', 'FCMController@subscribe');
+
+Route::post('announcements', 'AnnouncementController@create')->middleware('admin.auth');
+Route::get('hashletter/{hash}', 'HashLetterController@get');

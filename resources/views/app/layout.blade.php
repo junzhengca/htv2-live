@@ -34,86 +34,86 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAhjuSeGpUjWXwHrm7TZnpQb03iTHxCzno",
-        authDomain: "hack-the-valley-2-17d2d.firebaseapp.com",
-        databaseURL: "https://hack-the-valley-2-17d2d.firebaseio.com",
-        projectId: "hack-the-valley-2-17d2d",
-        storageBucket: "hack-the-valley-2-17d2d.appspot.com",
-        messagingSenderId: "242336252707"
-    };
-    firebase.initializeApp(config);
-    const messaging = firebase.messaging();
-    messaging.requestPermission()
-    .then(function() {
-        console.log('Notification permission granted.');
-        loadMessagingToken();
-    })
-    .catch(function(err) {
-        console.log('Unable to get permission to notify.', err);
-    });
-
-    /**
-     * This will loop until a message token is registered with server
-     */
-    function loadMessagingToken(){
-        messaging.getToken()
-        .then(function(currentToken) {
-            if (currentToken) {
-                // Send current token to server
-                console.log(currentToken);
-                axios.post("api/fcm/subscribe", {
-                    token: currentToken
-                }).then(function(){
-                    console.log("Successfully subscribed");
-                }).catch(function(e){
-                    console.log(e);
-                    console.log("Failed to subscribe");
-                    loadMessagingToken();
-                })
-            } else {
-                // Failed to get current token
-                console.log("failed");
-            }
-        })
-        .catch(function(err) {
-            console.log('An error occurred while retrieving token. ', err);
-        });
-    }
-
-
-    /**
-     * Handle token refresh
-     */
-    messaging.onTokenRefresh(function() {
-        messaging.getToken()
-        .then(function(refreshedToken) {
-            axios.post("api/fcm/subscribe", {
-                token: refreshedToken
-            }).then(function(){
-                console.log("Successfully subscribed");
-            }).catch(function(e){
-                console.log(e);
-                console.log("Failed to subscribe");
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAhjuSeGpUjWXwHrm7TZnpQb03iTHxCzno",
+            authDomain: "hack-the-valley-2-17d2d.firebaseapp.com",
+            databaseURL: "https://hack-the-valley-2-17d2d.firebaseio.com",
+            projectId: "hack-the-valley-2-17d2d",
+            storageBucket: "hack-the-valley-2-17d2d.appspot.com",
+            messagingSenderId: "242336252707"
+        };
+        firebase.initializeApp(config);
+        const messaging = firebase.messaging();
+        messaging.requestPermission()
+            .then(function() {
+                console.log('Notification permission granted.');
                 loadMessagingToken();
             })
-        })
-        .catch(function(err) {
-            console.log('Unable to retrieve refreshed token ', err);
-        });
-    });
+            .catch(function(err) {
+                console.log('Unable to get permission to notify.', err);
+            });
 
-    /**
-     * Handle message
-     */
-    messaging.onMessage(function(payload){
-        console.log(payload);
-        Push.create(payload.data.title, {
-            body: payload.data.body,
-            icon: 'https://live.hackvalley2.com/images/logo.png'
+        /**
+         * This will loop until a message token is registered with server
+         */
+        function loadMessagingToken(){
+            messaging.getToken()
+                .then(function(currentToken) {
+                    if (currentToken) {
+                        // Send current token to server
+                        console.log(currentToken);
+                        axios.post("api/fcm/subscribe", {
+                            token: currentToken
+                        }).then(function(){
+                            console.log("Successfully subscribed");
+                        }).catch(function(e){
+                            console.log(e);
+                            console.log("Failed to subscribe");
+                            loadMessagingToken();
+                        })
+                    } else {
+                        // Failed to get current token
+                        console.log("failed");
+                    }
+                })
+                .catch(function(err) {
+                    console.log('An error occurred while retrieving token. ', err);
+                });
+        }
+
+
+        /**
+         * Handle token refresh
+         */
+        messaging.onTokenRefresh(function() {
+            messaging.getToken()
+                .then(function(refreshedToken) {
+                    axios.post("api/fcm/subscribe", {
+                        token: refreshedToken
+                    }).then(function(){
+                        console.log("Successfully subscribed");
+                    }).catch(function(e){
+                        console.log(e);
+                        console.log("Failed to subscribe");
+                        loadMessagingToken();
+                    })
+                })
+                .catch(function(err) {
+                    console.log('Unable to retrieve refreshed token ', err);
+                });
         });
-    });
+
+        /**
+         * Handle message
+         */
+        messaging.onMessage(function(payload){
+            console.log(payload);
+            Push.create(payload.data.title, {
+                body: payload.data.body,
+                icon: 'https://live.hackvalley2.com/images/logo.png'
+            });
+        });
 
 
     </script>
