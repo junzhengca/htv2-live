@@ -132,6 +132,14 @@ h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
 }
+.how-to-play {
+  color: white;
+  font-size: 18px;
+}
+.how-to-play .text-muted {
+  color: white;
+  opacity: 0.7;
+}
 @media (max-width: 993px) {
   .card {
     margin-right: 0;

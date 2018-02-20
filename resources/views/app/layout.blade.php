@@ -12,7 +12,7 @@
         <!--Favicon-->
         <link rel="icon" href="images/favicon.png" />
         <!--Custom CSS-->      
-        <link rel="stylesheet" href="css/app.css?v=05" />
+        <link rel="stylesheet" href="css/app.css?v=06" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
