@@ -16,7 +16,8 @@
         $("#publish-button").click(function(){
             axios.post("api/announcements?key={{ request()->input('key') }}", {
                 message: $("#announcement-box").val()
-            }).then(function(){
+            }).then(function(data){
+                console.log(data.data);
                 alert("Announcement sent");
                 window.location.reload();
             }).catch(function(e){

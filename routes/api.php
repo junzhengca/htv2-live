@@ -25,3 +25,4 @@ Route::post('fcm/subscribe', 'FCMController@subscribe');
 
 Route::post('announcements', 'AnnouncementController@create')->middleware('admin.auth');
 Route::get('hashletter/{hash}', 'HashLetterController@get');
+Route::get('announcements', 'AnnouncementController@getAll');

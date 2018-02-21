@@ -12,7 +12,7 @@ class FCMController extends Controller
         if($request->input('token')){
             // https://iid.googleapis.com/iid/v1/dMn_mMcZhRk:APA91bEZVS6deQ6fpM4-c2cdPlj3jJXhEXRw4DQeu0jz3vW0lCQUXTG0UkoolGAx0oE8jN28xsi1bkLbnSPSN52d3g_FTsKKcWNyZ1ckpPXz4QiOL1MACqxT_JdqMpHgDkNOdZ6F74UQ/rel/topics/htv2-live
             $client = new Client();
-            $res = $client->post('https://iid.googleapis.com/iid/v1/' . $request->input('token') . '/rel/topics/htv2-live', ['headers' =>  ['Authorization' => 'key=' . env('FCM_KEY')]]);
+            $res = $client->post('https://iid.googleapis.com/iid/v1/' . $request->input('token') . '/rel/topics/' . env('FCM_TOPIC'), ['headers' =>  ['Authorization' => 'key=' . env('FCM_KEY')]]);
             if($res->getStatusCode()){
                 return response([
                     'status' => 'ok'

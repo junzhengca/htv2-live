@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-8 events-container">
+    <div class="col-md-6 events-container">
         <h2 v-if="hasHappening">happening right now</h2>
         <div class="event" v-for="event in events" v-if="eventHappening(event)">
             <h3>@{{ event.name }}</h3>
@@ -27,7 +27,16 @@
                 @{{ moment(event.start_time).format('dddd h:mm A') }} - @{{ moment(event.end_time).format('dddd h:mm A') }}
             </div>
         </div>
-    </div> 
+    </div>
+    <div class="col-md-2 announcements-container">
+        <h2><span class="typcn typcn-bell"></span></h2>
+        <div v-for="announcement in announcements">
+            <br>
+            <hr style="opacity: 0.3;">
+            <div class="announcement-time">@{{ moment(announcement.created_at).fromNow() }}</div>
+            <div class="announcement-text">@{{ announcement.message }}</div>
+        </div>
+    </div>
     <div class="col-md-4" id="twitter-container-wrapper">
         <div id="twitter-container">
             <a class="twitter-timeline" href="https://twitter.com/hack_valley?ref_src=twsrc%5Etfw">Tweets by hack_valley</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -64,19 +73,25 @@
         el: '#app',
         data: {
             events: [],
-            hasHappening: false
+            hasHappening: false,
+            announcements: []
         },
         mounted: function(){
             this.reloadEventsList();
-            let self = this;
+            var self = this;
             // Reload event list every 2 seconds
             setInterval(function(){
                 self.reloadEventsList();
-            }, 2000);
+            }, 10000);
+            this.reloadAnnouncementsList();
+            // Reload event list every 2 seconds
+            setInterval(function(){
+                self.reloadAnnouncementsList();
+            }, 10000);
         },
         methods: {
             reloadEventsList: function(){
-                let self = this;
+                var self = this;
                 axios.get("api/events").then(function(data){
                     self.hasHappening = false;
                     self.events = data.data;
@@ -90,6 +105,14 @@
                     return true;
                 }
                 return false;
+            },
+            reloadAnnouncementsList: function(){
+                var self = this;
+                axios.get("api/announcements").then(function(data){
+                    self.announcements = data.data.slice(0, 4);
+                }).catch(function(e){
+                    console.log(e);
+                });
             }
         }
     });

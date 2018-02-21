@@ -12,7 +12,7 @@
         <!--Favicon-->
         <link rel="icon" href="images/favicon.png" />
         <!--Custom CSS-->      
-        <link rel="stylesheet" href="css/app.css?v=06" />
+        <link rel="stylesheet" href="css/app.css?v=07" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
@@ -23,7 +23,11 @@
     <body>
     
     @include('partials.nav')
-    <div class="container" id="app">
+    @if(request()->is('/'))
+        <div class="container-fluid" id="app">
+    @else
+        <div class="container" id="app">
+    @endif
     @yield('content')
     </div>
 
@@ -108,13 +112,12 @@
          * Handle message
          */
         messaging.onMessage(function(payload){
-            console.log(payload);
-            Push.create(payload.data.title, {
+            console.log(payload.data.title);
+            var notification = new Notification(payload.data.title, {
                 body: payload.data.body,
                 icon: 'https://live.hackvalley2.com/images/logo.png'
             });
         });
-
 
     </script>
     @yield('script')

@@ -17,7 +17,7 @@ class EventController extends Controller
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function getAll(Request $request){
-        return response(Event::all(), 200);
+        return response(Event::orderBy('start_time', 'DESC')->get(), 200);
     }
 
     /**

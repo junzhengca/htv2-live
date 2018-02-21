@@ -24,7 +24,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
     // Customize notification here
     const notificationOptions = {
       body: payload.data.body,
-      logo: 'https://live.hackvalley2.com/images/logo.png'
+      icon: 'https://live.hackvalley2.com/images/logo.png'
     };
   
     return self.registration.showNotification(payload.data.title,
