@@ -1,11 +1,11 @@
 @extends('app.layout')
 
-@section('title', '500 Hash')
+@section('title', '500 encrypt')
 
 @section('content')
-    <h2>500 hash</h2>
+    <h2>500 encrypt</h2>
     <p class="large-description">Enter a string below to retrieve a letter</p>
-    <input class="form-control" placeholder="Hash" id="hash-box" /><br>
+    <input class="form-control" placeholder="String" id="hash-box" /><br>
     <button class="btn btn-primary" id="get-button"><span class="typcn typcn-location-arrow"></span> Submit</button>
     <h3>how to play</h3>
     <p class="how-to-play">
