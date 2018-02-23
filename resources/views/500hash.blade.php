@@ -6,6 +6,7 @@
     <h2>500 encrypt</h2>
     <p class="large-description">Enter a string below to retrieve a letter</p>
     <input class="form-control" placeholder="String" id="hash-box" /><br>
+    <p class="large-description" id="result"></p>
     <button class="btn btn-primary" id="get-button">Submit</button>
     <h3>how to play</h3>
     <p class="how-to-play">
@@ -23,13 +24,12 @@
         $("#get-button").click(function(){
             $(this).val("Checking...");
             axios.get("https://live.hackvalley2.com/api/hashletter/" + $("#hash-box").val()).then(function(data){
-                alert("The letter is " + data.data);
+                $("#result").html("The letter is <code>" + data.data + "</code>");
                 $("#get-button").html("Submit");
-                window.location.reload();
             }).catch(function(e){
                 console.log(e);
                 $("#get-button").html("Submit");
-                alert("Hash you entered is not valid. :(");
+                $("#result").html("Hash you entered is not valid. :(");
             })
         })
     </script>
