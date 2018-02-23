@@ -21,7 +21,7 @@
 
     <script>
         $("#get-button").click(function(){
-            axios.get("/api/hashletter/" + $("#hash-box").val()).then(function(data){
+            axios.get("https://live.hackvalley2.com/api/hashletter/" + $("#hash-box").val()).then(function(data){
                 alert("The letter is " + data.data);
                 window.location.reload();
             }).catch(function(e){
