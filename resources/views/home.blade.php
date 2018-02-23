@@ -21,8 +21,8 @@
         <div class="event" v-for="event in events" v-if="moment().isSameOrBefore(moment(event.start_time))">
             <h3>@{{ event.name }}</h3>
             @include('partials.event_labels')
-            <div class="event-until">@{{ moment(event.start_time).fromNow() }}</div>
-            <a :href="event.meta.location_link" v-if="event.meta.location"><div class="event-location"><span class="typcn typcn-location"></span> @{{ event.meta.location }}</div></a>
+            <div class="event-until">@{{ moment(event.start_time).fromNow() }} <span v-if="event.meta.location && event.meta.location_link == '#'">@{{ event.meta.location }}</span></div>
+            <a :href="event.meta.location_link" v-if="event.meta.location && event.meta.location_link != '#'"><div class="event-location"><span class="typcn typcn-location"></span> @{{ event.meta.location }}</div></a>
             <div class="event-timing">
                 @{{ moment(event.start_time).format('dddd h:mm A') }} - @{{ moment(event.end_time).format('dddd h:mm A') }}
             </div>
