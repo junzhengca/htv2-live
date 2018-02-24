@@ -4,5 +4,5 @@
 
 @section('content')
 <h2>hardware</h2>
-<p class="large-description">Hardware list is not yet available, please check back soon.</p>
+<p class="large-description">Go to <a href="https://hardware.mlh.io/events/hackthevalley-s2018">https://hardware.mlh.io/events/hackthevalley-s2018</a> to submit a hardware request.</p>
 @endsection
