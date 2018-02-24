@@ -35,6 +35,14 @@
                     <p>The .techsquad is offering a FREE .tech domain and the chance to win the .tech Category Prize - $250 Amazon Voucher! Cool, eh? Find out how – <a href="https://bit.ly/2EFLPN4">bit.ly/2EFLPN4</a></p>
                 </div>
             </div>
+            <br>
+            <div class="card">
+                <div class="card-title">InVision License</div>
+                <hr class="my-5">
+                <div class="card-body">
+                    <p>Simply go to <a href="https://www.invisionapp.com/signup/hackathon/hackvalley2">https://www.invisionapp.com/signup/hackathon/hackvalley2</a> and use code <code>INV-hv2</code> to signup!</p>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
