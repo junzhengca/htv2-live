@@ -45,6 +45,12 @@ Add a new line at end of the file, this is your admin password
 ADMIN_KEY=<Choose a random password>
 ```
 
+Add another line, this will be your timezone
+
+```
+TIMEZONE=<Time zone, for example EDT>
+```
+
 Save the file and run the following command to create all database tables you need
 
 ```bash
@@ -64,3 +70,46 @@ First create a new virtual host that points to `/public` folder, this applicatio
 Then make sure you have `AllowOverride all` applied to `/public`.
 
 Save and restart Apache.
+
+### 2. Test Your Deployment and Add Data
+
+Administration is done purely in command line.
+
+To manage the application, you `cd` into the application folder, and use following commands.
+
+```
+$ php artisan event:create
+$ php artisan event:delete {id}
+$ php artisan event:get {id}
+$ php artisan access_key:list
+$ php artisan event:list
+$ php artisan hash:generate {count} {phrase} # 500 hash thing, you prob don't need this
+$ php artisan event:update {id}
+```
+
+To access the announcement dashboard, you need to goto `live.domain.com/admin?=ADMIN_KEY`.
+
+Try type an announcement to make sure it works.
+
+### 3. Automatically Send Message to Slack Channel When Creating Anncoument
+
+You need to create a custom Slack integration for this. Goto this link for more detail: https://api.slack.com/bot-users
+
+After you have created the integration, you should receive an API key, add the following lines to `.env` file.
+
+```
+SLACK_KEY=<Slack API Key>
+SLACK_CHANNEL=<The channel you want to post message to, for example #mychannel, make sure you invte the bot to channel first>
+```
+
+### 4. Desktop and Android Notifications
+iOS does not support web notifications yet, so we only need to worry about desktop & Android.
+
+First you will need a FCM API key, create a Google account and signup for FCM.
+
+Add the following lines to `.env`:
+
+```
+FCM_TOPIC=<Choose a topic name, can be anything>
+FCM_KEY=<Your FCM API key>
+```
