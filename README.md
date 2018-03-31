@@ -3,7 +3,7 @@ Hack the Valley 2 Live Page
 
 ## Setup
 
-There are a lot of stuff you need to configure, so brace yourself. (*´∀`)~♥
+There are a lot of stuff you need to configure, so brace yourself. d(d＇∀＇)
 
 ### 0. Prerequisites
 * PHP >= 7.1
